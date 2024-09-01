@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    --primary-color: #E4E4E4;
+
+}
+
+body {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@keyframes blinker {
+
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        text-shadow: 0 0 4px var(--primary-color),
+            0 0 11px var(--primary-color),
+            0 0 19px black,
+            0 0 40px black,
+            0 0 80px black;
+    }
+
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+    }
+}
+
+.game-name {
+    font-size: 80px;
+    font-weight: 900;
+    width: 420px;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    animation-name: blinker;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+
+}
+
+.play-btn {
+    font-size: 36px;
+    font-weight: 600;
+    border: 3px solid black;
+    padding: 8px 16px;
+    border-radius: 16px;
+    background-color: transparent;
+    box-shadow: 0px 0px 20px black, 0px 0px 10px black;
+    
+    transition-property: background-color, color, transform, box-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+
+.play-btn:hover {
+    background-color: black;
+    color: var(--primary-color);
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 0px 8px black,
+    0px 0px 20px black;
+    cursor: pointer;
+}
+
+.info{
+    border: 3px solid black;
+    padding: 8px 16px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 0px 8px black,
+    0px 0px 20px black;
+    cursor: pointer;
+}
+.cross-circle-img{
+    width: 36px;
+    height: 36px;
+}
+h3{
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.container{
+    background-color: white;
+    padding: 12px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+}
+.btn{
+    width: 154px;
+    height: 154px;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 16px;
+    background-image: url("Media/State=Default\,\ Type=O.png");
+    background-position-x: center;
+    background-repeat: no-repeat;
+    border-top-right-radius: 32px;
+    border-bottom-left-radius: 32px;
+    cursor: pointer;
+
+    transition-property: width, height;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.cross-turn:hover{
+    background-image: url("Media/State=Hover\,\ Type=X.png");
+    background-position-x: center;
+    background-repeat: no-repeat;
+    width: 149px;
+    height: 149px;
+}
+.circle-turn:hover{
+    background-image: url("Media/State=Hover\,\ Type=O.png");
+    background-position-x: center;
+    background-repeat: no-repeat;
+    width: 149px;
+    height: 149px;
+}
+
+.final-cross-btn{
+    background-image: url("Media/State=1.png");
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 144px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-radius: 16px;
+    border: 2px solid orange;
+    cursor: not-allowed;
+}
+.final-circle-btn{
+    background-image: url("Media/State=2.png");
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 144px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-radius: 16px;
+    border: 2px solid blue;
+    cursor: not-allowed;
+}
+
+.result{
+    background-color: black;
+    color: var(--primary-color);
+}
+
+.hide{
+    display: none;
+}
+
+
+/* Full-Screen Intro */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 36px;
+    z-index: 999;
+    transition: transform 2s ease-in-out;
+}
+
+.intro-screen.hide {
+    transform: translateY(-100%);
+}
+
+/* Add some spacing at the top for the main content */
+.main-content {
+    margin-top: 80px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.main-content.visible {
+    opacity: 1;
+}
+
